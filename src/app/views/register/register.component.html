@@ -1,0 +1,71 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <notifier-container></notifier-container>
+        <div class="col-md-6 mx-auto">
+          <div class="card mx-4">
+            <div class="card-body p-4">
+              <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm.value)">
+                <h1>Register</h1>
+                <p class="text-muted">Create your account</p>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" name="firstName" placeholder="First name" autocomplete="firstName" required ngModel #firstNameInput="ngModel">
+                </div>
+                <span class="help-block" *ngIf="firstNameInput.invalid && firstNameInput.touched" style="color:red;">Please enter a first name</span>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" name="lastName" autocomplete="lastName" placeholder="Last name" required ngModel #lastNameInput="ngModel">
+                </div>
+                <span class="help-block" *ngIf="lastNameInput.invalid && lastNameInput.touched" style="color:red;">Please enter a last name</span>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" name="username" placeholder="Username" required ngModel #usernameInput="ngModel">
+                </div>
+                <span class="help-block" *ngIf="usernameInput.invalid && usernameInput.touched" style="color:red;">Please enter a username</span>
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">@</span>
+                  </div>
+                  <input type="text" class="form-control" name="email" placeholder="Email" required ngModel #emailInput="ngModel">
+                </div>
+                <span class="help-block" *ngIf="emailInput.invalid && emailInput.touched" style="color:red;">Please enter an email.</span>
+
+                <button type="submit" [disabled]="registerForm.invalid || showLoading" name="button" class="btn btn-block btn-ghost-primary">
+                  <i *ngIf="showLoading" class="fas fa-spinner fa-spin"></i>&nbsp;&nbsp;
+                  <span *ngIf="showLoading">Loading...</span>
+                  <span *ngIf="!showLoading">Register</span>
+                </button>
+              </form>
+            </div>
+            <div class="mt-4">
+              <div class="d-flex justify-content-center links">
+                Already have an account? <a routerLink="/login"  class="ml-2" style="color: #2C3E50;">Log In</a>
+              </div>
+            </div>
+            <div class="card-footer p-4">
+              <div class="row">
+                <div class="col-6">
+                  <button class="btn btn-block btn-facebook" type="button"><span>facebook</span></button>
+                </div>
+                <div class="col-6">
+                  <button class="btn btn-block btn-twitter" type="button"><span>twitter</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

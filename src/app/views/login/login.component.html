@@ -1,0 +1,61 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <notifier-container></notifier-container>
+        <div class="col-md-8 mx-auto">
+          <div class="card-group">
+            <div class="card p-4">
+              <div class="card-body">
+                <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm.value)">
+                  <h1>Login.....</h1>
+                  <p class="text-muted">Sign In to your account....</p>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                    </div>
+                    <input type="text" class="form-control" name="username" placeholder="Username" ngModel
+                           #usernameInput="ngModel" autocomplete="username" required>
+                  </div>
+                  <span class="help-block" style="color:#ff0000;"
+                        *ngIf="usernameInput.invalid && usernameInput.touched">Please enter a username</span>
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    </div>
+                    <input type="password" class="form-control" name="password" placeholder="Password" autocomplete="current-password" ngModel
+                           #passwordInput="ngModel" required>
+                  </div>
+                  <span class="help-block" style="color:#ff0000;"
+                        *ngIf="passwordInput.invalid && passwordInput.touched">Please enter password</span>
+                  <div class="row">
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                      <button type="submit" [disabled]="loginForm.invalid || showLoading" name="button" class="btn login_btn">
+                        <i *ngIf="showLoading" class="fas fa-spinner fa-spin"></i>&nbsp;&nbsp;
+                        <span *ngIf="showLoading">Loading...</span>
+                        <span *ngIf="!showLoading">Login</span>
+                      </button>
+                    </div>
+
+                    <div class="col-6 text-right">
+                      <button type="button" class="btn btn-link px-0">Forgot password?</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+              <div class="card-body text-center">
+                <div>
+                  <h2>Sign up</h2>
+                  <p>Don't have account yet? </p>
+                  <button type="button"  class="btn btn-primary active mt-3" routerLink="/register"  title="Register">Register Now!</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
